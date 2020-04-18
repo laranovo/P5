@@ -25,49 +25,19 @@ Ejercicios.
 Tomando como modelo un instrumento sencillo (puede usar el InstrumentDumb), genere cuatro instrumentos que
 permitan visualizar el funcionamiento de la curva ADSR.
 
-  Con tal de observar la curva ADSR hemos generado 4 instrumentos con diferentes ADSR, tomando como modelo el instrumento seno
-  (que hay que realizar posteriormente):
-
 * Un instrumento con una envolvente ADSR genérica, para el que se aprecie con claridad cada uno de sus
   parámetros: ataque (A), caída (D), mantenimiento (S) y liberación (R).
-  
-  FOTO
-  
-  Hemos generado el fichero .wav con el programa synth y la curva ADSR deseada, la visualizamos en un editor de audio y vemos
-  que en su representación temporal se observa de maravilla la curva ADSR, observando como la amplitud de la nota no se
-  mantiene constante a lo largo del tiempo si no que pasa por diferentes fases de intensidad. Observamos un ataque rápido, una
-  caída moderada, un largo mantenimiento y una liberación normal.
   
 * Un instrumento *percusivo*, como una guitarra o un piano, en el que el sonido tenga un ataque rápido, no
   haya mantenimiemto y el sonido se apague lentamente.
   - Para un instrumento de este tipo, tenemos dos situaciones posibles:
     * El intérprete mantiene la nota *pulsada* hasta su completa extinción.
-    
-    FOTO
-    
-    Observamos como el ataque es rápido, la caída es lenta, porque la nota se va apagando lentamente, no tiene mantenimiento y
-    la libración también es muy lenta, pues sería como si dejásemos la cuerda pulsada, así solo se liberaría realmente al
-    empezar la siguiente nota y levantar la presión de esta anterior.
-
-    
     * El intérprete da por finalizada la nota antes de su completa extinción, iniciándose una disminución
-	  abrupta del sonido hasta su finalización.
-    
-    FOTO
-    
-    Observamos el ataque rápido, la caída lenta porque la nota se va apagando lentamente y de repente soltamos, dejando muy
-    poco tiempo de liberación. Se observa como la nota se acaba rápidamente, sin llegar ni de lejos a la siguiente.
-	  
+	  abrupta del sonido hasta su finalización.	  
   - Debera representar en esta memoria **ambos** posibles finales de la nota.
 * Un instrumento *plano*, como los de cuerdas frotadas (violines y semejantes) o algunos de viento. En
   ellos, el ataque es relativamente rápido hasta alcanzar el nivel de mantenimiento (sin sobrecarga), y la
   liberación también es bastante rápida.
-  
-  FOTO
-  
-  Si observamos vemos como la curva ADSR se cumple a la perfección con lo estipulado, el ataque relativamente rápido, la caída
-  más o menos rápida, un mantenimiento muy largo y una liberación lenta, esto lo hicimos porque nos parecía más verosímil al
-  sonido de un violín en que las notas se solapan, es decir una no se apaga hasta que no empieza la siguiente.
   
 Para los cuatro casos, deberá incluir una gráfica en la que se visualice claramente la curva ADSR. Deberá
 añadir la información necesaria para su correcta interpretación, aunque esa información puede reducirse a
@@ -80,17 +50,9 @@ mediante búsqueda de los valores en una tabla.
 
 - Incluya, a continuación, el código del fichero `seno.cpp` con los métodos de la clase Seno.
     
-    FALTA
-    
 - Explique qué método se ha seguido para asignar un valor a la señal a partir de los contenidos en la tabla,
   e incluya una gráfica en la que se vean claramente (use pelotitas en lugar de líneas) los valores de la
   tabla y los de la señal generada.
-    
-    El instrumento seno funciona de la siguiente manera: se coge un periodo de la señal sinusoidal y se guarda en la tabla con
-    N muestras, ese periodo registrado en la tabla se puede recorrer más rápido o más lento, y eso es lo que haremos para
-    generar notas más agudas, o más graves respectivamente.
-    
-    FALTA!
     
 - Si ha implementado la síntesis por tabla almacenada en fichero externo, incluya a continuación el código
   del método `command()`.
@@ -102,81 +64,10 @@ mediante búsqueda de los valores en una tabla.
   índice de modulación) en la señal generada (se valorará que la explicación esté contenida en las propias
   gráficas, sin necesidad de *literatura*).
     
-    Hemos generado dos gráficas de Tremolo, una con una profundidad de modulación muy grande, por tanto, habrá variaciones muy
-    grandes en el volumen del sonido y su amplitud y por el contrario una frecuencia de modulación pequeña, es decir que habrá
-    cambios cada más tiempo, no son muy seguidos los cambios.
-    
-    FOTO
-    
-    En el segundo caso que se muestra a continuación, las variaciones serán más verosímiles y así la amplitud de la sinusoide
-    no se verá tan afectada:
-    
-    FOTO
-    
-    En cuanto al vibrato, sabemos que hace variar la frecuencia fundamental de la nota en función de los parámetros Intensidad
-    y la frecuencia de modulación. En la siguiente imagen podemos observar como las dos empiezan a la vez, pero no oscilan a
-    la misma frecuencia ya que el vibrato la va cambiando:
-    
-    FOTOS
-    
-    En esta segunda imagen podemos ver como mientras en la segunda gráfica la frecuencia se mantiene constante, arriba la
-    frecuencia va variando, comprimiendo y estirando la frecuencia fundamental de una misma nota. Este efecto puede ser
-    agradable en ciertos estilos de música e instrumentos, siempre y cuando no nos pasemos cambiando la frecuencia. En el
-    ejemplo de la guitarra o el bajo, queda muy bien en ciertos momentos mover el dedo un poco por la cuerda, para cambiar la
-    tensión producida y generar vibrato, pero si nos vamos 2 trastes abajo, queda mal, pues ya es claramente otra nota.
-    Incluso, muchas guitarras llevan un puente flotante o semiflotante para producir efecto de vibrato, que queda muy bien si
-    se sabe balancear el puente correctamente, cambiando la tensión de las cuerdas y por tanto su afinación en diversos
-    estilos y canciones.
-    
 - Si ha generado algún efecto por su cuenta, explique en qué consiste, cómo lo ha implementado y qué
   resultado ha producido. Incluya, en el directorio `work/ejemplos`, los ficheros necesarios para apreciar
   el efecto, e indique, a continuación, la orden necesaria para generar los ficheros de audio usando el
   programa `synth`.
-    
-    En nuestro caso, iguiendo ciertos conocimientos que teníamos de música y pedales, sabemos que la distorsión de la señal
-    (algo muy deseado en estilos como el rock, en ciertos instrumentos como la guitarra) se produce haciendo saturar la señal
-    que sale del instrumento. Es decir, elevando la tensión de la señal que sale de esta y recortando la señal por arriba,
-    como si el amplificador no pudiese sacar toda su amplitud. Cuando la distorsión empezó a usarse, esto se producía
-    realmente saturando los amplificadores de válvulas (eran los únicos que había en la época) haciéndoles entrar grandes 
-    cantidades de amplitud y haciendo que estos saturaran (recortasen la señal). Ahora, usamos gran cantidad de pedales para
-    ello (la mayoría analógicos) pues siguen produciendo aquel sonido tan característico de algunos amplificadores y porque
-    los efectos digitales siguen siendo (a opinión de muchos) aun un poco fríos (también amplificadores).
-    
-    Basándonos en esto, nosotros hemos generado un filtro de distorsión muy sencillo, cogiendo como modelo el filtro de
-    tremolo. Como es un filtro básico, tan solo hemos cogido un parámetro (A_MAX) la amplitud de la señal a la cual va a
-    empezar a saturar, cuanto más pequeña más distorsión, pues empieza a distorsionar antes la señal. De hecho, este recorte,
-    genera harmónicos superiores a múltiples de la frecuencia fundamental, con eso generamos la distorsión, cuantos más
-    harmónicos más distorsión, cuanto antes recortemos la señal, más distorsión.
-    
-    Nuestro algoritmo sencillo, primero, eleva x4 la amplitud de la señal original y luego, recorta la señal a partir de
-    cierta amplitud.
-    
-    FOTO
-    
-    Para llamar a este efecto, le asignamos un numero de efecto como a tremolo o vibrato y lo construimos en el fichero
-    effects.orc.
-    
-    FOTO
-    
-    Luego modificamos el fichero doremi como lo hacíamos con tremolo y vibrato. En este caso le hemos asignado el numero 13,
-    el mismo que tremolo, así que lo aplicaríamos igual.
-    
-    Observando los resultados vemos que hemos obtenido el efecto deseado.
-    
-    1. Una distorsión suave: apreciamos como la señal mantiene su forma casi todo el rato, pero cuando pasa un nivel bastante
-    considerable ya no tiene la forma redondeada del seno si no que satura, generando una distorsión muy suave pues satura en
-    puntos muy concretos.
-    
-    FOTO
-    
-    2. Distorsión heavy: si ponemos una A_MAX pequeña, conseguiremos que la señal quede muy distorsionada, y que haya perdido
-    casi por completo su forma sinusoidal. Uno de los efectos secundarios de la distorsión elevada es una pérdida de la
-    dinámica que genera el músico al tocar un instrumento: a causa de esta saturación grande, la nota prácticamente siempre
-    que se toca algo fuerte satura y se aplica un efecto de compresión, en el que tocar fuerte y normal prácticamente suena
-    parecido, solo se notaria la diferencia si tocas muy flojo, cuando la señal no satura. En la imagen se observa como
-    incluso amplitudes pequeñas estás saturadas
-    
-    FOTO
 
 ### Síntesis FM.
 
@@ -188,12 +79,6 @@ deberá venir expresado en semitonos.
 - Use el instrumento para generar un vibrato de *parámetros razonables* e incluya una gráfica en la que se
   vea, claramente, la correspondencia entre los valores `N1`, `N2` e `I` con la señal obtenida.
   
-    Mediante las explicaciones incluidas en la practica y el articulo de John M Chowning y basándonos en el instrumento seno,
-    producimos un instrumento que llamamos seno_vibrato que relamente se corresponde al instrumento producido mediante
-    Sintesis FM.
-    
-    FOTOS
-  
 - Use el instrumento para generar un sonido tipo clarinete y otro tipo campana. Tome los parámetros del
   sonido (N1, N2 e I) y de la envolvente ADSR del citado artículo. Con estos sonidos, genere sendas escalas
   diatónicas (fichero `doremi.sco`) y ponga el resultado en los ficheros `work/doremi/clarinete.wav` y
@@ -201,23 +86,6 @@ deberá venir expresado en semitonos.
   * También puede colgar en el directorio work/doremi otras escalas usando sonidos *interesantes*. Por
     ejemplo, violines, pianos, percusiones, espadas láser de la
 	[Guerra de las Galaxias](https://www.starwars.com/), etc.
-    
-    Basándonos en el articulo de John M Chowning y en nuestro código, hemos buscado la relación entre N1/N2 y la envolvente
-    ADSR para cada uno de los instrumentos que se nos pide (campana y clarinete).
-    
-    Clarinete
-    
-    Aquí vemos según el articulo, la envolvente ADSR del instrumento Clarinete. Según esto, definimos nuestros parámetros.
-    También, según el artículo la relación N1/N2 tiene que ser 3/1 y así lo dejamos.
-    
-    FOTO
-    
-    Bell
-    
-    En la siguiente gráfica, observamos la envolvente ADSR de una campana. También observamos la relación N1/N2 tiene que ser
-    1/1.4, esta si la seguimos, porque a demás al no ser entero, generamos una relación inarmónica como la de las campanas.
-    
-    FOTO
 
 ### Orquestación usando el programa synth.
 
